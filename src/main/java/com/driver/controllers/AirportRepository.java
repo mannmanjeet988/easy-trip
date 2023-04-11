@@ -76,8 +76,20 @@ public class AirportRepository {
 
         //Calculate the total number of people who have flights on that day on a particular airport
         //This includes both the people who have come for a flight and who have landed on an airport after their flight
-
+        Airport airport = airportMap.get(airportName);
+        if(Objects.isNull(airport)){
+           return 0;
+        }
         int count = 0;
+        City city = airport.getCity();
+        for(Flight flight : flightMap.values()){
+            if(date.equals(flight.getFlightDate())) {
+                if(flight.getToCity().equals(city) || flight.getFromCity().equals(city) ){
+                    int flightId = flight.getFlightId();
+                    count = count + flightToPassengerMap.get(flightId).size();
+                }
+            }
+        }
 
         return count;
     }

@@ -73,9 +73,9 @@ public class AirportRepository {
 
 
     public int getNumberOfPeopleOn(Date date, String airportName){
-
         //Calculate the total number of people who have flights on that day on a particular airport
         //This includes both the people who have come for a flight and who have landed on an airport after their flight
+
         Airport airport = airportMap.get(airportName);
         if(Objects.isNull(airport)){
            return 0;
@@ -207,11 +207,12 @@ public class AirportRepository {
     public int calculateRevenueOfAFlight(Integer flightId){
 
         int noOfPeopleBooked = flightToPassengerMap.get(flightId).size();
-        int variableFare = (noOfPeopleBooked*(noOfPeopleBooked+1))*25;
+        //int variableFare = (noOfPeopleBooked*(noOfPeopleBooked+1))*(50/2);
         int fixedFare = 3000*noOfPeopleBooked;
-        int totalFare = variableFare + fixedFare;
+       // int totalFare = variableFare + fixedFare;
 
-        return totalFare;
+
+        return fixedFare;
     }
 
     public String addPassenger(Passenger passenger){

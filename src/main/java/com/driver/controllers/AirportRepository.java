@@ -207,12 +207,12 @@ public class AirportRepository {
     public int calculateRevenueOfAFlight(Integer flightId){
 
         int noOfPeopleBooked = flightToPassengerMap.get(flightId).size();
-        //int variableFare = (noOfPeopleBooked*(noOfPeopleBooked+1))*(50/2);
+        int variableFare = (noOfPeopleBooked*(noOfPeopleBooked-1))*(50/2);
         int fixedFare = 3000*noOfPeopleBooked;
-       // int totalFare = variableFare + fixedFare;
+      int totalFare = variableFare + fixedFare;
 
 
-        return fixedFare;
+        return totalFare;
     }
 
     public String addPassenger(Passenger passenger){
